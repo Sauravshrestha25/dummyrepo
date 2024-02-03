@@ -24,3 +24,25 @@ readFile('./Content/SubFolder/first.txt', 'utf-8', (err, result) => {
     })
 })
 console.log('starting next task')
+
+
+const { readFile } = require('fs')
+
+const getText = (path) => {
+    return new Promise((resolve, reject) => {
+        readFile('./Content/SubFolder/first.txt', 'utf8', (err, data) => {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(data)
+            }
+        })
+    })
+}
+
+
+getText('./Content/SubFolder/first.txt')
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+
